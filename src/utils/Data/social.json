@@ -1,0 +1,14 @@
+{
+  "social": [
+    {
+      "item": "Github",
+      "icon": "github",
+      "url": "https://github.com/nicklima"
+    },
+    {
+      "item": "Siga no Linkedin",
+      "icon": "linkedin",
+      "url": "https://www.linkedin.com/in/nicklima/"
+    }
+  ],
+}
