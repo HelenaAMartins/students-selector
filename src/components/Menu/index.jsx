@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { withRouter } from "react-router-dom";
 
-const Menu = ({ classes, history }) => {
+const Menu = ({ classes, games, history }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const handleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -11,7 +11,7 @@ const Menu = ({ classes, history }) => {
     <Fragment>
       <button
         className={[
-          "button",
+          "navButton",
           "menuButton",
           isMenuOpen && "menuButton--open",
         ].join(" ")}
@@ -57,6 +57,22 @@ const Menu = ({ classes, history }) => {
                 </li>
               );
             })}
+            {games.map(({ title, url }) => {
+              return (
+                <li
+                  key={`menu_${url}`}
+                  onClick={() => {
+                    handleMenu();
+                    history.push(url);
+                  }}
+                >
+                  {title}
+                </li>
+              );
+            })}
+            <hr/>
+
+            <hr/>
             <li
               onClick={() => {
                 handleMenu();

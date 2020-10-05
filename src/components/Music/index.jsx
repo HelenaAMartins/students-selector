@@ -14,7 +14,7 @@ const Audio = ({ song }) => {
 
   return (
     <Fragment>
-      <span className="button playButton" onClick={() => audioButton()}>
+      <span className="navButton playButton" onClick={() => audioButton()}>
         {audioPlay && <Pause />}
         {!audioPlay && <Play />}
       </span>

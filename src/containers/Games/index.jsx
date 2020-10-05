@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 
 import StorageNotes from "../../services/StorageNotes";
-import { deleteStorage, random } from "../../utils/Helpers";
+import { KidBalloon, Rocket, Shuffle } from "../../utils/Icons";
+import { deleteStorage, random, getImage } from "../../utils/Helpers";
 
-import { BoxStudents } from "../../utils/Icons";
-import Secret from "../../audio/secret.mp3";
-
-import Error from "../../components/Error";
+import Secret from "../../audio/secret2.mp3";
 import Board from "../../components/Board";
 import Cloud from "../../components/Cloud";
 
-class Classes extends Component {
+class Games extends Component {
   state = {
     students: [],
     board: true,
@@ -155,18 +153,28 @@ class Classes extends Component {
         />
         <div className="container">
           <Cloud
-            title="Who will Choose the Song?"
+            title="Let's Play?"
             isLoading={isLoading}
             students={students}
           />
-          <div className="boxKids">
-            <button
-              className="button"
-              onClick={() => !isLoading && this.handleStudent()}
-            >
-              Escolher Aluno
-            </button>
-            <BoxStudents />
+          <div className="gameImg">
+            {isLoading ? (
+              <Shuffle />
+            ) : (
+              <img src={getImage(students.slice(-1)[0])} />
+            )}
+          </div>
+          <button
+            className="button"
+            onClick={() => !isLoading && this.handleStudent()}
+          >
+            Escolher
+          </button>
+          <div className="kidBallon">
+            <KidBalloon />
+          </div>
+          <div className="spaceRocket">
+            <Rocket />
           </div>
         </div>
       </section>
@@ -174,4 +182,4 @@ class Classes extends Component {
   }
 }
 
-export default Classes;
+export default Games;

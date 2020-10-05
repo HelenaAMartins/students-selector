@@ -1,5 +1,6 @@
 import React from "react";
 
+// ICONS
 export const Arrow = () => (
   <svg viewBox="0 0 256 256">
     <path d="M79.093 0L48.907 30.187 146.72 128l-97.813 97.813L79.093 256l128-128z" />
@@ -38,8 +39,25 @@ export const Pause = () => (
   </svg>
 );
 
+// Imagens
 export const TextBallon = () => (
-  <img src={require("../../images/cloud.png")} alt="Students" />
+  <img src={require("../../images/cloud.png")} alt="Cloud Ballon" />
+);
+
+export const LoadImg = () => (
+  <img src={require("../../images/load.gif")} alt="Carregando" />
+);
+
+export const Shuffle = () => (
+  <img src={require("../../images/shuffle.gif")} alt="Shuffle" />
+);
+
+export const KidBalloon = () => (
+  <img src={require("../../images/kid-balloon.png")} alt="Kid with Ballons" />
+);
+
+export const Rocket = () => (
+  <img src={require("../../images/rocket.png")} alt="Space Rocket" />
 );
 
 export const BoxStudents = () => (

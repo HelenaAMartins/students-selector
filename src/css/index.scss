@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Grandstander:wght@600&display=swap");
 
 $color-primary: #03a9f4;
 $color-white: #fff;
@@ -34,46 +34,85 @@ body {
   padding: 0;
 }
 
+.button {
+  background: $color-purple;
+  border: 5px solid #ffc758;
+  border-radius: 35px;
+  color: white;
+  cursor: pointer;
+  display: block;
+  left: 50%;
+  margin: 0 auto;
+  outline: none;
+  padding: 10px 20px;
+  position: absolute;
+  top: 40%;
+  transition: all 0.5s;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+
+  &:hover {
+    background: darken($color-purple, 25%);
+  }
+
+  @media only screen and (min-width: 320px) {
+    top: 5%;
+  }
+
+  @media only screen and (min-width: 1023px) {
+    top: 15%;
+  }
+}
+
 ///////////////////////////////////////////
 // LOAD SITE
 ///////////////////////////////////////////
 
 .loadPage {
-    align-items: center;
-    background: #4bc8af;
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    opacity: 0;
-    position: absolute;
-    transition: all 0.5s;
-    visibility: hidden;
-    width: 100%;    
-    z-index: 10;
+  align-items: center;
+  background: $color-purple;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  transition: all 0.5s;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 10;
 
-    img {
-      width: 300px;
-    }
+  figure {
+    background: $color-white;
+    border: 20px double $color-purple;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+  }
 
-    &--loading {
-      visibility: visible;
-      opacity: 1;
-    }
+  img {
+    max-width: 100%;
+  }
+
+  &--loading {
+    visibility: visible;
+    opacity: 1;
+  }
 }
-
 
 ///////////////////////////////////////////
 // BUTTONS
 ///////////////////////////////////////////
 
-.button {
+.navButton {
   align-items: center;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   height: 30px;
   justify-content: center;
-  position: absolute;  
+  position: absolute;
   transition: all 0.5s;
   width: 30px;
 
@@ -90,7 +129,7 @@ body {
   display: flex;
   height: 30px;
   justify-content: center;
-  justify-self: flex-end;  
+  justify-self: flex-end;
   outline: none;
   transition: 0.5s all;
   transition-delay: 0.3s;
@@ -158,15 +197,15 @@ body {
   background-color: tomato;
   left: 60px;
   top: 20px;
-  z-index: 3;  
+  z-index: 3;
 
   &:hover {
     background-color: darken(tomato, 25%);
   }
 }
 
-.playButton  {  
-  background-color: $color-purple;  
+.playButton {
+  background-color: $color-purple;
   right: 20px;
   top: 20px;
   z-index: 5;
@@ -181,6 +220,7 @@ body {
   position: absolute;
   right: 60px;
   top: 20px;
+  z-index: 2;
 
   &:hover {
     background: darken($color-green, 25%);
@@ -201,7 +241,7 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
   height: 100%;
   left: 0;
-  opacity: 0;  
+  opacity: 0;
   position: fixed;
   top: 0;
   transition: 0.5s all;
@@ -228,11 +268,11 @@ body {
     padding-top: 50px;
     position: fixed;
     transform: translateX(-100%);
-    transition: 0.5s all;    
+    transition: 0.5s all;
     width: 100%;
     z-index: 7;
 
-    @media only screen and (min-width: 500px){
+    @media only screen and (min-width: 500px) {
       max-width: 320px;
     }
 
@@ -285,28 +325,36 @@ audio {
   z-index: 5;
 }
 
-
 // BlackBoard
 .quadro {
   position: fixed;
   right: 5%;
   top: 65px;
-  transition: all 0.5s;    
+  transition: all 0.5s;
   transform: translateX(0);
   width: 90%;
   z-index: 5;
-  
-  @media only screen and (min-width: 768px){
+
+  @media only screen and (min-width: 768px) {
     max-width: 200px;
-    right: 18px;    
+    right: 18px;
   }
 
   &.show {
     transform: translateX(200%);
   }
-  
+
+  & span {
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &:hover {
+      color: red;
+    }
+  }
+
   div {
-    background: url('../images/blackboard.jpg') #000;
+    background: url("../images/blackboard.jpg") #000;
     border: 5px #ffda8a double;
     color: #fff;
     display: flex;
@@ -319,14 +367,14 @@ audio {
   }
 }
 
-// HTML 
+// HTML
 .container {
   margin: 0 auto;
   max-width: $container-max-width;
   padding: 120px $app-padding $app-padding;
-  
-  @media only screen and (min-width: 1000px){
-    padding: 80px $app-padding $app-padding; 
+
+  @media only screen and (min-width: 1000px) {
+    padding: 80px $app-padding $app-padding;
   }
 }
 
@@ -334,9 +382,10 @@ section {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 700px;
+  max-height: 100vh;
   overflow: hidden;
-  position: relative;  
+  position: relative;
 }
 
 // Nuvem
@@ -351,7 +400,7 @@ section {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    top: -20px;
+    top: -40px;
     color: $color-green;
     width: 100%;
     text-align: center;
@@ -366,7 +415,7 @@ section {
     color: $color-gold;
     font-size: 25px;
     font-weight: bold;
-    
+
     left: 50%;
     position: absolute;
     top: 45%;
@@ -390,8 +439,7 @@ section {
     width: 100%;
   }
 
-  @media only screen and (min-width: 400px){
-    
+  @media only screen and (min-width: 400px) {
     height: 68px;
     width: 178px;
 
@@ -414,65 +462,129 @@ section {
     transform: translate(-50%, -50%);
   }
 
-  button {
-    background: $color-purple;
-    border: 5px solid #ffc758;
-    border-radius: 35px;
-    color: white;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    outline: none;
-    padding: 10px 20px;
-    transition: all 0.5s;
-    position: absolute;
-    z-index: 2;
-  
-    left: 50%;
-    top: 70%;
-    transform: translate(-50%, -50%);
-  
-    &:hover {
-      background: darken($color-purple, 25%);
-    }
-  }
-
   img {
     margin-left: 20px;
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-name: move;
-    max-width: 100%;  
+    max-width: 100%;
   }
 
-  @media only screen and (min-width: 400px){
+  @media only screen and (min-width: 400px) {
     button {
       top: 40%;
     }
   }
 
-  @media only screen and (min-width: 500px){
+  @media only screen and (min-width: 500px) {
     margin-top: -150px;
   }
 
-  @media only screen and (min-width: 1000px){
+  @media only screen and (min-width: 1000px) {
     button {
       top: 50%;
     }
   }
 }
 
-// Keyframes
-@keyframes bounce {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-10px); }  
-  100% { transform: translateY(0); }
+///////////////////////////////////////////
+// GAMES
+///////////////////////////////////////////
+
+.gameImg {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  transform: translate(-50%, 0%);
+  height: 250px;
+  width: 250px;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
-@keyframes move {
-  0%   { transform: translateX(0); }
-  50%  { transform: translateX(-50px); }  
-  100% { transform: translateX(0); }
+.kidBallon {
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: inherit;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    width: 250px;
+    z-index: 1;
+
+    img {
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-name: ballon;
+      width: 100%;
+    }
+  }
+}
+
+.spaceRocket {
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: inherit;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    z-index: 1;
+
+    img {
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-name: rocket;
+      width: 100%;
+    }
+  }
+}
+
+///////////////////////////////////////////
+// ERROR PAGE
+///////////////////////////////////////////
+
+.saveError {
+  position: absolute;
+  color: $color-purple;
+  background: black;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  z-index: 5;
+  bottom: 35px;
+}
+
+.error {
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+
+  & h1 {
+    margin-bottom: 30px;
+    color: $color-purple;
+  }
+
+  & .btn-reload {
+    border: 0;
+    left: auto;
+    margin-top: 30px;
+    padding: 10px 12px;
+    position: relative;
+    top: auto;
+    transform: initial;
+  }
 }
 
 ///////////////////////////////////////////
@@ -482,7 +594,7 @@ section {
 .about {
   text-align: center;
   line-height: 1.3;
-  
+
   h1 {
     color: $color-green;
     font-size: 28px;
@@ -490,7 +602,7 @@ section {
     text-transform: uppercase;
     margin-bottom: 30px;
   }
-  
+
   h2 {
     color: $color-purple;
     font-size: 20px;
@@ -520,17 +632,69 @@ section {
       width: 40px;
       align-items: center;
       justify-content: center;
-  
+
       &:hover {
-        background-color: darken($color-purple, 10%);     
+        background-color: darken($color-purple, 10%);
       }
-      
     }
   }
 
-  & svg, & svg path {
+  & svg,
+  & svg path {
     fill: $color-white !important;
     height: 20px;
     width: 20px;
+  }
+}
+
+///////////////////////////////////////////
+// KEYFRAMES
+///////////////////////////////////////////
+
+@keyframes rocket {
+  0% {
+    transform: rotate(-10deg) translateX(-50%);
+  }
+  50% {
+    transform: rotate(-10deg) translateX(0);
+  }
+  100% {
+    transform: rotate(-10deg) translateX(40%);
+  }
+}
+
+@keyframes ballon {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
