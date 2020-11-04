@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // Listas
 import ClassInfo from "../../utils/Data/turmas.json";
 import GameList from "../../utils/Data/games.json";
+import MemoryData from "../../utils/Data/memory-game.json";
 
 // Components
 import Home from "../Home";
 import Classes from "../Class";
 import Games from "../Games";
+import MemoryCard from "../MemoryCard";
 import About from "../Sobre";
 import Menu from "../../components/Menu";
 import Audio from "../../components/Music";
@@ -22,11 +24,7 @@ class App extends Component {
 
   componentDidMount() {
     const { song, song2, location } = this.props;
-    const newAudio =
-      location.pathname === "/sexta-super-2-3" ||
-      location.pathname === "/sexta-super-4-5"
-        ? song2
-        : song;
+    const newAudio = location.pathname === "/dance-and-freeze" ? song2 : song;
     this.setState({ audioSong: newAudio });
     setTimeout(() => this.setState({ isLoading: false }), 3500);
   }
@@ -43,7 +41,7 @@ class App extends Component {
           </figure>
         </div>
         <Audio song={audioSong} />
-        <Menu classes={ClassInfo} games={GameList} />
+        <Menu classes={ClassInfo} games={GameList} memory={MemoryData} />
         <Fragment>
           <Route path="/" exact component={Home} />
           {ClassInfo.map((item) => {
@@ -64,6 +62,16 @@ class App extends Component {
                 path={`/${item.url}`}
                 exact
                 render={(props) => <Games data={item} />}
+              />
+            );
+          })}
+          {MemoryData.games.map((item) => {
+            return (
+              <Route
+                key={item.url}
+                path={`/memory-game/${item.url}`}
+                exact
+                render={(props) => <MemoryCard data={item} />}
               />
             );
           })}

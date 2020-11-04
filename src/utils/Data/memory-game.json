@@ -1,0 +1,54 @@
+{
+  "title": "Memory Game",
+  "url": "memory-game",
+  "games": [
+    {
+      "url": "animals",
+      "title": "Animals",
+      "list": [
+        "Spider",
+        "Lizard",
+        "Crocodile",
+        "Tiger",
+        "Snake",
+        "Elephant",
+        "Frog",
+        "Cow",
+        "Hippo",
+        "Giraffe"
+      ]
+    },
+    {
+      "url": "colors",
+      "title": "Colors",
+      "list": [
+        "Yellow",
+        "Brown",
+        "Red",
+        "Green",
+        "Purple",
+        "Pink",
+        "Blue",
+        "Orange",
+        "Black",
+        "Gray"
+      ]
+    },
+    {
+      "url": "clothing",
+      "title": "Clothing",
+      "list": [
+        "T-shirt",
+        "Pants",
+        "Jeans",
+        "Jacket",
+        "Shirt",
+        "Flip flop",
+        "Shoes",
+        "Trainers",
+        "Dress",
+        "Cap"
+      ]
+    }
+  ]
+}

@@ -1,16 +1,9 @@
 import React, { Fragment } from "react";
 
 import { Arrow, Trash } from "../../utils/Icons";
-import { deleteStorage } from "../../utils/Helpers";
 import TrashSound from "../../audio/trash.mp3";
 
-const Board = ({
-  students,
-  localStorage,
-  status,
-  handleBoard,
-  handleDelete,
-}) => {
+const Board = ({ handleBoard, handleDelete, names, status, students }) => {
   const PlayTrash = () => {
     // Play Sound
     const audioEl = new Audio(TrashSound);
@@ -18,19 +11,7 @@ const Board = ({
     audioEl.play();
   };
 
-  const handleTrash = (localStorage) => {
-    PlayTrash();
-    deleteStorage(localStorage);
-    // SetTimeOut para dar sensação de espera
-    setTimeout(
-      function () {
-        window.location.reload(false);
-      }.bind(this),
-      1000
-    );
-  };
-
-  const handleTrashItem = (item) => {
+  const handleTrash = (item) => {
     PlayTrash();
     handleDelete(item);
   };
@@ -40,7 +21,7 @@ const Board = ({
       {students && students.length > 0 && (
         <span
           className="navButton deleteButton"
-          onClick={() => handleTrash(localStorage)}
+          onClick={() => handleTrash("all")}
         >
           <Trash />
         </span>
@@ -55,14 +36,19 @@ const Board = ({
       )}
       {students && students.length > 0 && (
         <div className={`quadro ${!status && "show"}`}>
+          <small className="qtdBoard">
+            {students.length + " de " + names.length}
+          </small>
           <div>
-            {students.map((item) => {
-              return (
-                <span key={item} onClick={(e) => handleTrashItem(item)}>
-                  {item}
-                </span>
-              );
-            })}
+            <ul>
+              {students.map((item) => {
+                return (
+                  <li key={item} onClick={(e) => handleTrash(item)}>
+                    {item}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       )}

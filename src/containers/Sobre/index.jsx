@@ -14,7 +14,7 @@ const About = () => (
       <h2>Créditos</h2>
       As <a href="https://www.fesliyanstudios.com/" target="_blank"> 
         Músicas e Sons
-      </a> utilizadas são de livre. As imagens e ícones utilizadas também o são.
+      </a> utilizadas são de livre uso. 
     </div>
   </section>
 );

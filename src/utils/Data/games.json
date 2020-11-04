@@ -26,13 +26,40 @@
     ]
   },
   {
-    "title": "Sexta Super - 2º e 3º Anos",
-    "url": "sexta-super-2-3",
-    "names": ["Giraffe", "Hipoppotamus", "Lemur", "Lion", "Penguin", "Zebra"]
-  },
-  {
-    "title": "Sexta Super - 4º e 5º Anos",
-    "url": "sexta-super-4-5",
-    "names": ["Giraffe", "Hipoppotamus", "Lemur", "Lion", "Penguin", "Zebra"]
+    "title": "Dance & Freeze",
+    "url": "dance-and-freeze",
+    "names": [
+      "Giraffe",
+      "Hippo",
+      "Lemur",
+      "Lion",
+      "Penguin",
+      "Zebra",
+      "Dog",
+      "Cat",
+      "Spider",
+      "Snake",
+      "Wolf",
+      "Bird",
+      "Wonder Woman",
+      "Batman",
+      "Teacher",
+      "Reading",
+      "Jumping",
+      "Superman",
+      "Iron Man",
+      "Spiderman",
+      "Robot",
+      "Helicopter",
+      "Car",
+      "Mr. Bean",
+      "Teddy",
+      "Monkey",
+      "Ride a Bike",
+      "Swim",
+      "Drive",
+      "Paint",
+      "Play Football"
+    ]
   }
 ]

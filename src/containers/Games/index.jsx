@@ -4,6 +4,7 @@ import StorageNotes from "../../services/StorageNotes";
 import { KidBalloon, Rocket, Shuffle } from "../../utils/Icons";
 import { deleteStorage, random, getImage } from "../../utils/Helpers";
 
+import imgPath from "../../images/games/*.jpg";
 import Secret from "../../audio/secret2.mp3";
 import Board from "../../components/Board";
 import Cloud from "../../components/Cloud";
@@ -28,15 +29,18 @@ class Games extends Component {
   // Catch Error
   handleCatch = () => {
     this.setState({ reloadHasError: true });
-    console.log("catch");
   };
 
   // Reload Storage Items
   handleReload = () => {
     const storageVar = this.props.data.url;
+
     StorageNotes.load(storageVar)
       .then((data) => {
-        this.setState({ students: data, reloadHasError: false });
+        this.setState({
+          students: data,
+          reloadHasError: false,
+        });
       })
       .catch(() => {
         this.setState({ reloadHasError: true });
@@ -57,15 +61,20 @@ class Games extends Component {
 
   // Delete Storage Item
   handleDelete = (value) => {
-    this.setState((prevState) => {
-      const newStudents = prevState.students.slice();
-      const index = newStudents.findIndex((n) => n === value);
-      newStudents.splice(index, 1);
-      this.handleSave(newStudents);
-      return {
-        students: newStudents,
-      };
-    });
+    if (value === "all") {
+      this.setState({ students: [] });
+      this.handleSave([])
+    } else {
+      this.setState((prevState) => {
+        const newStudents = prevState.students.slice();
+        const index = newStudents.findIndex((n) => n === value);
+        newStudents.splice(index, 1);
+        this.handleSave(newStudents);
+        return {
+          students: newStudents,
+        };
+      });
+    }
   };
 
   // Add Storage Item
@@ -134,7 +143,7 @@ class Games extends Component {
       reloadHasError,
       saveHasError,
     } = this.state;
-    const { title, url } = this.props.data;
+    const { title, url, names } = this.props.data;
 
     if (reloadHasError) return <Error onRetry={this.handleReload} />;
 
@@ -145,11 +154,11 @@ class Games extends Component {
         )}
         <div className="turmaInfo">{title}</div>
         <Board
-          localStorage={url}
-          status={board}
-          students={students}
           handleDelete={this.handleDelete}
           handleBoard={this.handleBoard}
+          names={names}
+          status={board}
+          students={students}
         />
         <div className="container">
           <Cloud
@@ -161,7 +170,7 @@ class Games extends Component {
             {isLoading ? (
               <Shuffle />
             ) : (
-              <img src={getImage(students.slice(-1)[0])} />
+              <img src={getImage(students, imgPath)} />
             )}
           </div>
           <button

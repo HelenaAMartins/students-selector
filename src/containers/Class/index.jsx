@@ -59,15 +59,20 @@ class Classes extends Component {
 
   // Delete Storage Item
   handleDelete = (value) => {
-    this.setState((prevState) => {
-      const newStudents = prevState.students.slice();
-      const index = newStudents.findIndex((n) => n === value);
-      newStudents.splice(index, 1);
-      this.handleSave(newStudents);
-      return {
-        students: newStudents,
-      };
-    });
+    if (value === "all") {
+      this.setState({ students: [] });
+      this.handleSave([])
+    } else {
+      this.setState((prevState) => {
+        const newStudents = prevState.students.slice();
+        const index = newStudents.findIndex((n) => n === value);
+        newStudents.splice(index, 1);
+        this.handleSave(newStudents);
+        return {
+          students: newStudents,
+        };
+      });
+    }
   };
 
   // Add Storage Item
@@ -136,7 +141,7 @@ class Classes extends Component {
       reloadHasError,
       saveHasError,
     } = this.state;
-    const { title, url } = this.props.data;
+    const { title, url, names } = this.props.data;
 
     if (reloadHasError) return <Error onRetry={this.handleReload} />;
 
@@ -147,11 +152,11 @@ class Classes extends Component {
         )}
         <div className="turmaInfo">{title}</div>
         <Board
-          localStorage={url}
-          status={board}
-          students={students}
           handleDelete={this.handleDelete}
           handleBoard={this.handleBoard}
+          names={names}
+          status={board}
+          students={students}
         />
         <div className="container">
           <Cloud

@@ -14,33 +14,16 @@ export const random = (data) => {
   return data[random];
 };
 
-export const getImage = (title) => {
-  
-  const letsPlayImg = require("../../images/lets-play.jpg");
-  let image = "";
-  
-  switch (title) {
-    case "Giraffe":
-      image = require("../../images/games/giraffe.jpg");
-      break;
-    case "Hipoppotamus":
-      image = require("../../images/games/hipoppotamus.jpg");
-      break;
-    case "Lemur":
-      image = require("../../images/games/lemur.jpg");
-      break;
-    case "Lion":
-      image = require("../../images/games/lion.jpg");
-      break;
-    case "Penguin":
-      image = require("../../images/games/penguin.jpg");
-      break;
-    case "Zebra":
-      image = require("../../images/games/zebra.jpg");
-      break;
-    default:
-      image = letsPlayImg;
-  }
+export const convertSlug = (str) => {
+  console.log(str);
+  str && str;
+  return str;
+};
 
+export const getImage = (arr, imgPath) => {
+  const obj =
+    arr.length > 0 &&
+    arr.slice(-1)[0].split(" ").join("").replace(".", "").toLowerCase();
+  const image = imgPath[obj] ? imgPath[obj] : imgPath["_lets-play"];
   return image;
 };

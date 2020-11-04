@@ -1,0 +1,124 @@
+$color-purple: #b073b3;
+$color-gold: #ffa542;
+
+.sectionMemoryCard {
+  display: block;
+  margin: 0 auto;
+  padding-top: 50px;
+  height: auto;
+  max-height: fit-content;
+}
+
+.memory-game {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+  padding: 15px;
+  perspective: 1000px;
+  width: 100%;
+}
+
+.memory-card {
+  min-height: 250px;
+  height: 100%;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: all 0.5s;
+  width: 100%;
+
+  & span {
+    color: #a73b14;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-weight: 800;
+    font-size: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & * {
+    pointer-events: none;
+  }
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: all 0.1s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: $color-gold;
+  backface-visibility: hidden;
+  border: 3px double #000;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+.button {
+  @media only screen and (max-width: 2000px) {
+    top: 25% !important;
+    background-color: $color-gold !important;
+  }
+}
+
+.gameEnd {
+  background: #b378b6;
+  height: 100%;
+  opacity: 0;
+  position: fixed;
+  transition: all 0.5s;
+  visibility: hidden;
+  width: 100%;
+  z-index: 3;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  & div {
+    position: absolute;
+    left: 50%;
+    width: 580px;
+    z-index: 2;
+    top: 45%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    // position: relative;
+  }
+
+  & span {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 800;
+    color: $color-purple;
+  }
+
+  & img {
+    width: 100%;
+  }
+}
+
+.deleteButton {
+  z-index: 5 !important;
+}

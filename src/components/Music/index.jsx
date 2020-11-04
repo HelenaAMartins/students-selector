@@ -6,7 +6,7 @@ const Audio = ({ song }) => {
   const [audioPlay, setAudioPlay] = useState(false);
 
   const audioButton = () => {
-    soundPlayer.current.volume = 0.3;
+    soundPlayer.current.volume = 1;
     audioPlay && soundPlayer.current.pause();
     !audioPlay && soundPlayer.current.play();
     setAudioPlay(!audioPlay);
@@ -23,7 +23,7 @@ const Audio = ({ song }) => {
         ref={soundPlayer}
         title="Intro Sounds"
         id="player"
-        volume={0.2}
+        volume={1}
         autoPlay={audioPlay === "true" && true}
         controls
         loop

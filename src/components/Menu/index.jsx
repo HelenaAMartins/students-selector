@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { withRouter } from "react-router-dom";
 
-const Menu = ({ classes, games, history }) => {
+const Menu = ({ classes, games, memory, history }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const handleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -36,14 +36,7 @@ const Menu = ({ classes, games, history }) => {
           ].join(" ")}
         >
           <ul className="">
-            <li
-              onClick={() => {
-                handleMenu();
-                history.push("/");
-              }}
-            >
-              Início
-            </li>
+            <h3>Turmas</h3>
             {classes.map(({ title, url }) => {
               return (
                 <li
@@ -57,6 +50,7 @@ const Menu = ({ classes, games, history }) => {
                 </li>
               );
             })}
+            <h3>Jogos</h3>
             {games.map(({ title, url }) => {
               return (
                 <li
@@ -70,9 +64,30 @@ const Menu = ({ classes, games, history }) => {
                 </li>
               );
             })}
-            <hr/>
+            <h3>Memory Game</h3>
+            {memory.games.map(({ title, url }) => {
+              return (
+                <li
+                  key={`menu_${url}`}
+                  onClick={() => {
+                    handleMenu();
+                    history.push(`/memory-game/${url}`);
+                  }}
+                >
+                  {title}
+                </li>
+              );
+            })}
+            <h3>Infos</h3>
 
-            <hr/>
+            <li
+              onClick={() => {
+                handleMenu();
+                history.push("/");
+              }}
+            >
+              Início
+            </li>
             <li
               onClick={() => {
                 handleMenu();
